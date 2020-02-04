@@ -57,11 +57,21 @@ class AdditemViewController: UITableViewController, UITextFieldDelegate{
     @IBAction func doNe(_ sender: Any) {
         
         let item = ChecklistItem()
+        if textField.text == ""
+        {
+            let alert = UIAlertController(title: "Insert something", message: "You haven't added anthing", preferredStyle: .alert)
+           // let action = UIAlertAction(title: "Add Item", style: .default)
+            present(alert, animated: true){
+            sleep(1)
+            alert.dismiss(animated: true)
+        }
+        }
+        else{
         item.text = textField.text!
 //        HomeTableViewController.add(items)
         dismiss(animated: true, completion: nil)
         delegate?.addItemViewController(self, didFinishAdding: item)
-        
+        }
     }
     override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
     return nil
